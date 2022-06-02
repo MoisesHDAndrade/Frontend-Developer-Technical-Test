@@ -23,34 +23,15 @@ let vue = new Vue({
                 "size":this.selectedSize, 
                 "quantity":1
                 }
-                // console.log(product.id)
-         
-            if(this.selectedSize){
-               this.alertMessage = false
-                for(item of this.cart){
-                    if(item.id === this.selectedSize.id){
-                        const found = this.cart.find(item => item.id === this.selectedSize.id)
-                        console.log(found)
-                        // console.log(this.cart[this.cart.indexOf(item,0)])
-                        this.cart.splice(this.cart.indexOf(item), 0)
-                        item.quantity += 1
-                        this.cart[this.cart.indexOf(item)] = item
-                        // console.log(this.cart[this.cart.indexOf(item)])
-                        
-                    }
-                   
-                    
-                }
+              
+              if(!this.sizesArray.includes(this.selectedSize.id)){
+                this.sizesArray.push(this.selectedSize.id)
                 this.cart.push(product)
-               
-            }
-            else{
-                this.alertMessage = true
-            }
-
-              
-              
-            
+                
+              }else{
+                  this.cart.find(item => item.id === this.selectedSize.id).quantity++
+              }
+          
         }
     },
     mounted(){
