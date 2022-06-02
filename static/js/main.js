@@ -10,7 +10,8 @@ let vue = new Vue({
     },
     methods:{
         async getProducts(){
-            const response = await axios.get('//localhost:5000/api');
+            // const response = await axios.get('//localhost:5000/api');
+            const response = await axios.get('//sea-turtle-app-xz46v.ondigitalocean.app/api');
             this.products = response.data
         },
         selectSize(size){
